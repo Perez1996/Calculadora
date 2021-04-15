@@ -10,8 +10,30 @@ assert_equals () {
 	fi	
 }
 
+echo 'Test de suma decimal'
 echo 'Test 1: 3 + 5'
 response=$(./calc_asm d 3 + 5)
 assert_equals "$response" 8
 
+echo 'Test 2: -2 + 5'
+response=$(./calc_asm d -2 + 5)
+assert_equals "$response" 3
 
+echo 'Test de resta decimal'
+echo 'Test 3: 5 - 3'
+response=$(./calc_asm d 5 - 3)
+assert_equals "$response" 2
+
+echo 'Test 4: -5 - 3'
+response=$(./calc_asm d 5 - 3)
+assert_equals "$response" -8
+
+echo 'Test de suma binaria'
+echo 'Test 1: 1000 + 1010'
+response=$(./calc_asm b 1000 + 1010)
+assert_equals "$response" 20
+
+echo 'Test de resta binaria'
+echo 'Test 2: 1000 + 0101'
+response=$(./calc_asm b 1000 - 0101)
+assert_equals "$response" 3
