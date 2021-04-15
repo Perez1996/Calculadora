@@ -10,6 +10,16 @@ assert_equals () {
 	fi	
 }
 
-echo 'Test 1: 3 + 5'
-response=$(./calc_asm d 3 + 5)
-assert_equals "$response" 8
+#!/bin/bash
+
+VAR1="Linuxize"
+VAR2="Linuxize"
+
+if [ "$VAR1" = "$VAR2" ]; then
+    echo "Strings are equal."
+else
+    echo "Strings are not equal."
+fi
+
+
+
