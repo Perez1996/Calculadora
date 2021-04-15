@@ -36,6 +36,8 @@ int main(int argc,char *argv[])
 		numB=binarioADecimal(argv[4]);
 			if(*argv[3]=='+')
 				suma_asm(numA,numB,&resultado);
+			if(*argv[3]=='-')
+				resta_asm(numA,numB,&resultado);
 		printf("%d",resultado);	
 	}
 		
