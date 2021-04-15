@@ -2,7 +2,7 @@
 
 echo 'Corriendo Test de unidad de la calculadora multimodulo - Perez / Carrizo'
 assert_equals () {
-	if ["$1"="$2"]; then 
+	if [ "$1" = "$2" ]; then 
 		echo -e "$Green $Chech_Mark Success $Color_Off"
 	else
 		echo -e "$Red Failed $Color_Off"
@@ -10,16 +10,8 @@ assert_equals () {
 	fi	
 }
 
-#!/bin/bash
-
-VAR1="Linuxize"
-VAR2="Linuxize"
-
-if [ "$VAR1" = "$VAR2" ]; then
-    echo "Strings are equal."
-else
-    echo "Strings are not equal."
-fi
-
+echo 'Test 1: 3 + 5'
+response=$(./calc_asm d 3 + 5)
+assert_equals "$response" 8
 
 
