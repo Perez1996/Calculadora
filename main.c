@@ -14,10 +14,7 @@ int binarioADecimal(char *cadenaBinaria);
 
 int main(int argc,char *argv[])
 {
-	int opcion=0;
-
 	int numA,numB,operacion,resultado;
-
 	char * pEnd1;
    	char * pEnd2; //valores aux para convertir los chr en int
    	long int var1,var2;
