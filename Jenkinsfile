@@ -1,9 +1,13 @@
 pipeline {
   agent any
   stages {
-    stage('error') {
+    stage('Build') {
       steps {
-        sh 'echo \'holanda world\' '
+        sh 'make'
+      }
+      stage('Tests') {
+      steps {
+        sh 'sh test.sh'
       }
     }
 
