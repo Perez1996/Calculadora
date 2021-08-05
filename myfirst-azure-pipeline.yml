@@ -14,18 +14,30 @@ steps:
   displayName: 'Run Build stage'
 
 # Caracter | sirve para definir un multitask script
-jobs:
-- job: Build
-  steps:
-  - script: |   
-      sudo apt-get update && sudo apt-get install -y build-essential && sudo apt-get install -y nasm && sudo apt-get install -y gcc-multilib g++-multilib
-      echo "Compiling the code..."
-      make
-      echo "Compile complete."
-    displayName: 'Build stage'
-- job: Test
-  steps:
-  - script: |
-      echo "Unit Test.."
-      sh test.sh
+stages:
+- stage: Build
+  displayName: Build stage
+  jobs:
+  - job: buildjob
+    displayName: C and Nasm compile
+
+    steps:
+    - task: Make
+    - script: |
+        sudo apt-get update && sudo apt-get install -y build-essential && sudo apt-get install -y nasm && sudo apt-get install -y gcc-multilib g++-multilib
+        echo "Compiling the code..."
+      
+- stage: Test
+  displayName: Test stage
+  jobs:
+  - job: testjob
+    displayName: C and Nasm compile
+
+    steps:
+    - task: Make
+    - script: |
+        echo "Unit Test.."
+        sh test.sh
+
+
       
