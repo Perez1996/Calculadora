@@ -10,10 +10,12 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- script: echo Building...
+  displayName: 'Run Build stage'
 
 - script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+    apt-get update && apt-get install -y build-essential && apt-get install -y nasm && apt-get install -y gcc-multilib g++-multilib
+    echo "Compiling the code..."
+    make
+    echo "Compile complete."
+  displayName: 'Build stage'
