@@ -32,7 +32,7 @@ stages:
       displayName: C and Nasm compile
 
       steps:
-      - task: Make
+      - task: Test
       - script: |
           echo "Unit Test.."
           sh test.sh
