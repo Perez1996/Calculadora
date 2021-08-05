@@ -9,35 +9,33 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- script: echo Building...
-  displayName: 'Run Build stage'
 
 # Caracter | sirve para definir un multitask script
 stages:
-- stage: Build
-  displayName: Build stage
-  jobs:
-  - job: buildjob
-    displayName: C and Nasm compile
 
-    steps:
-    - task: Make
-    - script: |
-        sudo apt-get update && sudo apt-get install -y build-essential && sudo apt-get install -y nasm && sudo apt-get install -y gcc-multilib g++-multilib
-        echo "Compiling the code..."
-      
-- stage: Test
-  displayName: Test stage
-  jobs:
-  - job: testjob
-    displayName: C and Nasm compile
+  - stage: Build
+    displayName: Build stage
+    jobs:
+    - job: buildjob
+      displayName: C and Nasm compile
 
-    steps:
-    - task: Make
-    - script: |
-        echo "Unit Test.."
-        sh test.sh
+      steps:
+      - task: Make
+      - script: |
+          sudo apt-get update && sudo apt-get install -y build-essential && sudo apt-get install -y nasm && sudo apt-get install -y gcc-multilib g++-multilib
+          echo "Compiling the code..."
+        
+  - stage: Test
+    displayName: Test stage
+    jobs:
+    - job: testjob
+      displayName: C and Nasm compile
+
+      steps:
+      - task: Make
+      - script: |
+          echo "Unit Test.."
+          sh test.sh
 
 
       
