@@ -1,5 +1,7 @@
 # syntax=docker/dockerfile:1
-FROM frolvlad/alpine-gcc
+FROM alpine:latest
+
+CMD rependencies.sh
 
 WORKDIR /app
 
