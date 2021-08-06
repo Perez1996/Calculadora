@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
-FROM alpine:latest
+FROM ubuntu:latest
 
-RUN apk update && apk --no-cache --update add build-base 
+RUN sh dependencies.sh
 
 WORKDIR /app
 
