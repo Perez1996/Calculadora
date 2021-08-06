@@ -3,7 +3,7 @@ FROM ubuntu:latest
 
 WORKDIR /app
 
-COPY calc_asm ./app
+COPY calc_asm /
 
 
 
