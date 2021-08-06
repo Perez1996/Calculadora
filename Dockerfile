@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM frolvlad/alpine-gcc
+FROM alpine:latest
 
 WORKDIR /app
 
