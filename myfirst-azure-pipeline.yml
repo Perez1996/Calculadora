@@ -7,24 +7,34 @@ trigger:
 - master
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: eperez96/ubuntu-custom-calc:v1.0
 
 
 # Caracter | sirve para definir un multitask script
 stages:
-- stage: Build
+- stage: Build & Test
   jobs:
-  - job: FirstJob
+  - job: Build
     steps:
-    - bash: echo Build FirstJob
+    - bash: echo Building...
     - bash: make
-- stage: Test
-  dependsOn: Build
-  jobs:
   - job: Test
     steps:
     - bash: echo Testing...
     - bash: sh test.sh
+- stage: Build Docker Image
+  jobs:
+  - job: Docker Login
+    steps:
+    - bash: docker login -u eperez96 --password 8e489e6f-5639-4ee1-9f3d-ebde39b7e100
+  - job: Docker Build
+    steps:
+    - bash: make
+    - bash: sudo docker build -t eperez96/Calc_asm:v1.$(Build.BuildNumber) .
+  - job: Docker Push
+    steps:
+      - bash: sudo docker push eperez96/ubuntu-custom-calc:v1.$(Build.BuildNumber)
+
 # - stage: QADeploy
 #   variables:
 #     environment: QA
