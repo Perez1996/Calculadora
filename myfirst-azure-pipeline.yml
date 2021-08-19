@@ -12,7 +12,7 @@ pool:
 
 # Caracter | sirve para definir un multitask script
 stages:
-- stage: Build & Test
+- stage: Build&Test
   jobs:
   - job: Build
     steps:
