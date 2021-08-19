@@ -24,14 +24,14 @@ stages:
     - bash: sh test.sh
 - stage: Build Docker Image
   jobs:
-  - job: Docker Login
+  - job: Docker_Login
     steps:
     - bash: docker login -u eperez96 --password 8e489e6f-5639-4ee1-9f3d-ebde39b7e100
-  - job: Docker Build
+  - job: Docker_Build
     steps:
     - bash: make
     - bash: sudo docker build -t eperez96/Calc_asm:v1.$(Build.BuildNumber) .
-  - job: Docker Push
+  - job: Docker_Push
     steps:
       - bash: sudo docker push eperez96/ubuntu-custom-calc:v1.$(Build.BuildNumber)
 
