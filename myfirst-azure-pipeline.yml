@@ -22,7 +22,7 @@ stages:
     steps:
     - bash: echo Testing...
     - bash: sh test.sh
-- stage: Build Docker Image
+- stage: Build_Docker_Image
   jobs:
   - job: Docker_Login
     steps:
