@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: eperez96/ubuntu-custom-calc:v1.0
+  vmImage: eperez96/ubuntu-custom-calc:latest
 
 
 # Caracter | sirve para definir un multitask script
